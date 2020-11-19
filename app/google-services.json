@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1084006679256",
+    "firebase_url": "https://sistech-f2b1e.firebaseio.com",
+    "project_id": "sistech-f2b1e",
+    "storage_bucket": "sistech-f2b1e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1084006679256:android:c8c9098e62772eccdc4dad",
+        "android_client_info": {
+          "package_name": "com.instagram.cursoandroid.jamiltondamasceno.instagram"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1084006679256-uk06ns6fjft4dl0tho6tdbnfb0lov7q3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.instagram.cursoandroid.jamiltondamasceno.instagram",
+            "certificate_hash": "04435f007e6eb2342879e9ad3be285cb49e98a78"
+          }
+        },
+        {
+          "client_id": "1084006679256-kap10ne98dcq3o23po4tc5lrjknbq54h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzUttXCAVCfZqvfazuaz8iiv9Bq3tGzE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1084006679256-kap10ne98dcq3o23po4tc5lrjknbq54h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
