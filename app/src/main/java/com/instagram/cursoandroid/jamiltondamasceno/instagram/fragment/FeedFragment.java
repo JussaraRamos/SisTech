@@ -18,6 +18,7 @@ import com.instagram.cursoandroid.jamiltondamasceno.instagram.adapter.AdapterFee
 import com.instagram.cursoandroid.jamiltondamasceno.instagram.helper.ConfiguracaoFirebase;
 import com.instagram.cursoandroid.jamiltondamasceno.instagram.helper.UsuarioFirebase;
 import com.instagram.cursoandroid.jamiltondamasceno.instagram.model.Feed;
+import com.instagram.cursoandroid.jamiltondamasceno.instagram.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,6 +35,7 @@ public class FeedFragment extends Fragment {
     private ValueEventListener valueEventListenerFeed;
     private DatabaseReference feedRef;
     private String idUsuarioLogado;
+    private Usuario usuario;
 
 
     public FeedFragment() {
@@ -43,15 +45,15 @@ public class FeedFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState)
+    {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feed, container, false);
-
+        usuario= UsuarioFirebase.getDadosUsuarioLogado();
         //Configurações iniciais
         idUsuarioLogado = UsuarioFirebase.getIdentificadorUsuario();
         feedRef = ConfiguracaoFirebase.getFirebase()
-                .child("feed")
-                .child( idUsuarioLogado );
+                .child("feed");
 
         //Inicializar componentes
         recyclerFeed = view.findViewById(R.id.recyclerFeed);
@@ -70,8 +72,13 @@ public class FeedFragment extends Fragment {
         valueEventListenerFeed = feedRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for ( DataSnapshot ds: dataSnapshot.getChildren() ){
-                    listaFeed.add( ds.getValue(Feed.class) );
+                for ( DataSnapshot ds: dataSnapshot.getChildren() ) {
+                    for (DataSnapshot snapshot : ds.getChildren()) {
+                        listaFeed.add(snapshot.getValue(Feed.class));
+                        Feed feed= snapshot.getValue(Feed.class);
+                        feed.setFotoUsuario(usuario.getCaminhoFoto());
+                        listaFeed.add(feed);
+                    }
                 }
                 Collections.reverse( listaFeed );
                 adapterFeed.notifyDataSetChanged();
